@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import Person from './Person/Person'
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+    state = {
+        person: [
+            { name: 'Max'},
+            ],
+    };
+
+    switchNameHandler = () => {
+        console.log('Was clicked!', this);
+    };
+
+    render() {
+        return (
+            <div className="App">
+                <h1>Hi, I'm a React App</h1>
+                <p>This is really working!</p>
+                <button onClick={this.switchNameHandler}>Switch Name</button>
+                <Person name="Sergii" age="31"/>
+                <Person name="Vadim" age="55">My Hobbies: Racing</Person>
+                <Person name="Taras" age="64"/>
+            </div>
+    );
+  }
 }
 
 export default App;
