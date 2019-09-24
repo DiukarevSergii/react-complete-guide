@@ -6,11 +6,11 @@ class App extends Component {
   state = {
     persons: [
       { name: 'Max', age: 28 },
-      { name: 'Manu', age: 29 },
+      { name: 'Cortes', age: 29 },
       { name: 'Stephanie', age: 26 }
     ],
     otherState: 'some other value'
-  }
+  };
 
   switchNameHandler = (newName) => {
     // console.log('Was clicked!');
@@ -22,7 +22,7 @@ class App extends Component {
         { name: 'Stephanie', age: 27 }
       ]
     } )
-  }
+  };
 
   nameChangedHandler = (event) => {
     this.setState( {
@@ -32,7 +32,7 @@ class App extends Component {
         { name: 'Stephanie', age: 26 }
       ]
     } )
-  }
+  };
 
   render () {
     return (
@@ -40,16 +40,16 @@ class App extends Component {
         <h1>Hi, I'm a React App</h1>
         <p>This is really working!</p>
         <button onClick={() => this.switchNameHandler('Maximilian!!')}>Switch Name</button>
-        <Person 
-          name={this.state.persons[0].name} 
+        <Person
+          name={this.state.persons[0].name}
           age={this.state.persons[0].age} />
-        <Person 
-          name={this.state.persons[1].name} 
+        <Person
+          name={this.state.persons[1].name}
           age={this.state.persons[1].age}
           click={this.switchNameHandler.bind(this, 'Max!')}
           changed={this.nameChangedHandler} >My Hobbies: Racing</Person>
-        <Person 
-          name={this.state.persons[2].name} 
+        <Person
+          name={this.state.persons[2].name}
           age={this.state.persons[2].age} />
       </div>
     );
