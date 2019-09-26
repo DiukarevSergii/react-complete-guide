@@ -24,21 +24,19 @@ class App extends Component {
     } )
   };
 
-  nameChangedHandler = (event) => {
-    this.setState( {
-      persons: [
-        { name: 'Max', age: 28 },
-        { name: event.target.value, age: 29 },
-        { name: 'Stephanie', age: 26 }
-      ]
-    } )
+  deletePersonHandler = (index) => {
+      const persons = [...this.state.persons];
+      console.log(persons);
+      console.log(index);
+      persons.splice(index, 1);
+      this.setState({persons})
   };
 
   render () {
       const persons = (
           <div>
           {this.state.persons.map((person, index) => {
-          return <Person name={person.name} age={person.age} personIndex={index}/>
+          return <Person name={person.name} age={person.age} personIndex={index} click={() =>this.deletePersonHandler(index)}/>
             })
           }
           </div>
