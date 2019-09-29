@@ -3,8 +3,8 @@ import './App.css';
 import Person from './Person/Person';
 
 class App extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             persons: [
                 { id: 1, name: 'Max', age: 28 },
@@ -19,7 +19,7 @@ class App extends Component {
     this.setState( {
       persons: [
         { id: 1, name: newName, age: 28 },
-        { id: 2, name: 'Manu', age: 29 },
+        { id: 2, name: 'Max', age: 29 },
         { id: 3, name: 'Stephanie', age: 27 }
       ]
     } )
