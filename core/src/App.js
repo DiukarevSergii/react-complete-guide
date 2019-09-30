@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
+import Validation from './Validation/Validation';
 
 class App extends Component {
     constructor(props) {
@@ -77,6 +78,7 @@ class App extends Component {
             <input type="text" onChange={(event) => this.lineChangeHandler(event)}/>
             <br/>
             <p>The line length: {this.state.line.length}</p>
+            <Validation lineLength={this.state.line.length} />
             <br/>
             {persons}
         </div>
