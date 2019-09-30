@@ -44,8 +44,6 @@ class App extends Component {
 
   deletePersonHandler = (index) => {
       const persons = [...this.state.persons];
-      console.log(persons);
-      console.log(index);
       persons.splice(index, 1);
       this.setState({persons})
   };
@@ -53,7 +51,15 @@ class App extends Component {
   lineChangeHandler = (event) => {
       const { value } = event.target;
       this.setState({line: value});
-};
+  };
+
+  deleteLineHandler = (index) => {
+      console.log('deleteLineHandler');
+      let line = [ ...this.state.line ];
+      line.splice(index, 1);
+      line = line.join('');
+      this.setState({line})
+  };
 
   render () {
       const persons = (
@@ -73,10 +79,13 @@ class App extends Component {
 
       const chars = (
           <div>
-              {
-                  this.state.line.split('').map(letter => {
-                      return <Char letter={letter}/>
-                  })
+              {   this.state.line !== '' ?
+                  this.state.line.split('').map((letter, index)=> {
+                      return <Char
+                          letter={letter}
+                          click={() =>this.deleteLineHandler(index)}
+                      />
+                  }) : ''
               }
           </div>
       );
