@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
 import Validation from './Validation/Validation';
+import Char from './Char/Char';
 
 class App extends Component {
     constructor(props) {
@@ -69,6 +70,17 @@ class App extends Component {
               }
           </div>
       );
+
+      const chars = (
+          <div>
+              {
+                  this.state.line.split('').map(letter => {
+                      return <Char letter={letter}/>
+                  })
+              }
+          </div>
+      );
+
       return (
         <div className="App">
             <h1>Hi, I'm a React App</h1>
@@ -79,6 +91,8 @@ class App extends Component {
             <br/>
             <p>The line length: {this.state.line.length}</p>
             <Validation lineLength={this.state.line.length} />
+            <br/>
+            {chars}
             <br/>
             {persons}
         </div>
