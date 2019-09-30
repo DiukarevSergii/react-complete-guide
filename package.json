@@ -3,12 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react-scripts": "1.0.13"
+    "eslint": "^5.16.0",
+    "react-scripts": "^3.1.2"
   },
   "scripts": {
+    "preinstall": "find . -name \"node_modules\" -exec rm -rf '{}' + && find . -name \"package-lock.json\" -exec rm -rf '{}' +",
+    "install-packages": "npm install",
+    "postinstall": "(cd core && npm install); (cd assignments && npm install);",
     "start": "cd core && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "eslint-plugin-react": "^7.14.3"
   }
 }
