@@ -11,7 +11,7 @@ class App extends Component {
                 { id: 2, name: 'Cortes', age: 29 },
                 { id:3, name: 'Stephanie', age: 26 }
             ],
-            otherState: 'some other value'
+            line: '',
         };
     }
 
@@ -48,28 +48,38 @@ class App extends Component {
       this.setState({persons})
   };
 
+  lineChangeHandler = (event) => {
+      const { value } = event.target;
+      this.setState({line: value});
+};
+
   render () {
       const persons = (
           <div>
-          {this.state.persons.map((person, index) => {
-          return <Person
-              key={person.id}
-              name={person.name}
-              age={person.age}
-              click={() =>this.deletePersonHandler(index)}
-              changed={(event) => this.nameChangedHandler(event, person.id)}
-          />
-            })
-          }
+              {this.state.persons.map((person, index) => {
+                  return <Person
+                      key={person.id}
+                      name={person.name}
+                      age={person.age}
+                      click={() =>this.deletePersonHandler(index)}
+                      changed={(event) => this.nameChangedHandler(event, person.id)}
+                  />
+              })
+              }
           </div>
       );
-    return (
-      <div className="App">
-        <h1>Hi, I'm a React App</h1>
-        <p>This is really working!</p>
-        <button onClick={() => this.switchNameHandler('Maximilian!!')}>Switch/Reset Names</button>
-          {persons}
-      </div>
+      return (
+        <div className="App">
+            <h1>Hi, I'm a React App</h1>
+            <p>This is really working!</p>
+            <button onClick={() => this.switchNameHandler('Maximilian!!')}>Switch/Reset Names</button>
+            <br/>
+            <input type="text" onChange={(event) => this.lineChangeHandler(event)}/>
+            <br/>
+            <p>The line length: {this.state.line.length}</p>
+            <br/>
+            {persons}
+        </div>
     );
   }
 }
