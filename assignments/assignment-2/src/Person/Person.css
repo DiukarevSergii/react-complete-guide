@@ -1,0 +1,9 @@
+
+.Person {
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+    width: 200px;
+    height: 150px;
+    background: rebeccapurple;
+}
