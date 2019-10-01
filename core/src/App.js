@@ -83,7 +83,7 @@ class App extends Component {
                   this.state.line.split('').map((letter, index)=> {
                       return <Char
                           letter={letter}
-                          click={() =>this.deleteLineHandler(index)}
+                          clicked={() =>this.deleteLineHandler(index)}
                       />
                   }) : ''
               }
