@@ -4,3 +4,11 @@
     align-items: center;
     justify-content: center;
 }
+
+.App button.Red {
+    background: red;
+}
+
+.App button.Red:hover {
+    background: green;
+}
