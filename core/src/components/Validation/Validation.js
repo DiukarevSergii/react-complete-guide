@@ -11,6 +11,7 @@ const validation = ( props ) => {
 
     return (
         <div className="Validation">
+            <p>The line length: {props.lineLength}</p>
             <p>{validationMessage}</p>
         </div>
     )

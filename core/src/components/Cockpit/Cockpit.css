@@ -1,0 +1,8 @@
+
+.Cockpit button.Red {
+    background: red;
+}
+
+.Cockpit button.Red:hover {
+    background: green;
+}

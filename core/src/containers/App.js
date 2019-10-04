@@ -3,6 +3,7 @@ import './App.css';
 import Persons from '../components/Persons/Persons';
 import Validation from '../components/Validation/Validation';
 import Char from '../components/Char/Char';
+import Cockpit from "../components/Cockpit/Cockpit";
 
 class App extends Component {
     constructor(props) {
@@ -75,24 +76,23 @@ class App extends Component {
           </div>
       );
 
+      const persons = <Persons
+          persons={this.state.persons}
+          click={this.deletePersonHandler}
+          changed={this.nameChangedHandler}
+      />;
+
       return (
         <div className="App">
-            <h1>Hi, I'm a React App</h1>
-            <p>This is really working!</p>
-            <button className="Red" onClick={() => this.switchNameHandler('Maximilian!!')}>Switch/Reset Names</button>
-            <br/>
-            <input type="text" onChange={(event) => this.lineChangeHandler(event)}/>
-            <br/>
-            <p>The line length: {this.state.line.length}</p>
+            <Cockpit
+                click={this.switchNameHandler}
+                change={this.lineChangeHandler}
+            />
             <Validation lineLength={this.state.line.length} />
             <br/>
             {chars}
             <br/>
-            <Persons
-                persons={this.state.persons}
-                click={this.deletePersonHandler}
-                changed={this.nameChangedHandler}
-            />
+            {persons}
         </div>
     );
   }

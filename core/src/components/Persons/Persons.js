@@ -2,7 +2,7 @@ import React from 'react';
 import Person from './Person/Person';
 import './Person/Person.css';
 
-const persons = ( props ) => props.persons.map((person, index) => {
+const Persons = ( props ) => props.persons.map((person, index) => {
     const { changed, click } = props;
 
     return <Person
@@ -15,4 +15,4 @@ const persons = ( props ) => props.persons.map((person, index) => {
 });
 
 
-export default persons;
+export default Persons;
