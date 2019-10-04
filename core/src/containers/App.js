@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Person from '../components/Persons/Person/Person';
+import Persons from '../components/Persons/Persons';
 import Validation from '../components/Validation/Validation';
 import Char from '../components/Char/Char';
 
@@ -62,21 +62,6 @@ class App extends Component {
   };
 
   render () {
-      const persons = (
-          <div>
-              {this.state.persons.map((person, index) => {
-                  return <Person
-                      key={person.id}
-                      name={person.name}
-                      age={person.age}
-                      click={() =>this.deletePersonHandler(index)}
-                      changed={(event) => this.nameChangedHandler(event, person.id)}
-                  />
-              })
-              }
-          </div>
-      );
-
       const chars = (
           <div>
               {   this.state.line !== '' ?
@@ -103,7 +88,11 @@ class App extends Component {
             <br/>
             {chars}
             <br/>
-            {persons}
+            <Persons
+                persons={this.state.persons}
+                click={this.deletePersonHandler}
+                changed={this.nameChangedHandler}
+            />
         </div>
     );
   }
