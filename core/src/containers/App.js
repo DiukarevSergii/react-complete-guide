@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Person from '../components/Person/Person';
+import Person from '../components/Persons/Person/Person';
 import Validation from '../components/Validation/Validation';
 import Char from '../components/Char/Char';
 
