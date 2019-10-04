@@ -10,7 +10,7 @@ const validation = ( props ) => {
     }
 
     return (
-        <div className="Validation">
+        <div className="App Validation">
             <p>The line length: {props.lineLength}</p>
             <p>{validationMessage}</p>
         </div>
