@@ -83,6 +83,7 @@ class App extends Component {
       />;
 
       const cockpit = <Cockpit
+          title={this.props.title}
           click={this.switchNameHandler}
           change={this.lineChangeHandler}
       />;
