@@ -82,13 +82,17 @@ class App extends Component {
           changed={this.nameChangedHandler}
       />;
 
+      const cockpit = <Cockpit
+          click={this.switchNameHandler}
+          change={this.lineChangeHandler}
+      />;
+
+      const validation = <Validation lineLength={this.state.line.length} />;
+
       return (
         <div className="App">
-            <Cockpit
-                click={this.switchNameHandler}
-                change={this.lineChangeHandler}
-            />
-            <Validation lineLength={this.state.line.length} />
+            {cockpit}
+            {validation}
             <br/>
             {chars}
             <br/>
