@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useEffect }  from 'react';
 import Person from './Person/Person';
 import './Person/Person.css';
 
-const Persons = ( props ) => props.persons.map((person, index) => {
+const Persons = ( props ) => {
+    useEffect(() => {
+        setTimeout(() => {
+            alert('Alert when persons changed!');
+        })
+    }, [props.persons]);
+
+    return props.persons.map((person, index) => {
     const { changed, click } = props;
 
     return <Person
@@ -12,7 +19,8 @@ const Persons = ( props ) => props.persons.map((person, index) => {
         click={() =>click(index)}
         changed={(event) => changed(event, person.id)}
     />
-});
+    })
+};
 
 
 export default Persons;
