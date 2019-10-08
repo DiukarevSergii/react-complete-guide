@@ -6,8 +6,7 @@ const Persons = ( props ) => {
     useEffect(() => {
         setTimeout(() => {
             console.log('[Persons.js] main useEffect work');
-            // alert('Alert when persons changed!');
-        });
+        }, 1500);
         return () => {
             console.log('[Persons.js] cleanup work in useEffect');
         }
