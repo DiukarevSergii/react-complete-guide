@@ -5,8 +5,12 @@ import './Person/Person.css';
 const Persons = ( props ) => {
     useEffect(() => {
         setTimeout(() => {
-            alert('Alert when persons changed!');
-        })
+            console.log('[Persons.js] main useEffect work');
+            // alert('Alert when persons changed!');
+        });
+        return () => {
+            console.log('[Persons.js] cleanup work in useEffect');
+        }
     }, [props.persons]);
 
     return props.persons.map((person, index) => {
