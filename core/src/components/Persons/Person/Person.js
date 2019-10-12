@@ -1,28 +1,27 @@
-import React, { useEffect } from 'react';
-import './Person.css';
+import React, { Component } from 'react';
 
-const Person = (props) => {
-    const { click, name, age, changed } = props;
+import Aux from '../../../hoc/Aux';
+import withClass from '../../../hoc/withClass';
+import classes from './Person.css';
 
-    useEffect(() => {
-        console.log(`[Person.js] Name: ${name} main useEffect work`);
+class Person extends Component {
+  render() {
+    console.log('[Person.js] rendering...');
+    return (
+      <Aux>
+        <p onClick={this.props.click}>
+          I'm {this.props.name} and I am {this.props.age} years old!
+        </p>
+        <p key="i2">{this.props.children}</p>
+        <input
+          key="i3"
+          type="text"
+          onChange={this.props.changed}
+          value={this.props.name}
+        />
+      </Aux>
+    );
+  }
+}
 
-        const timer = setTimeout(() => {
-            alert('Alert when person changed!');
-        }, 5000);
-        return () => {
-            console.log(`[Person.js] Name: ${name} cleanup work in useEffect`);
-            console.log(`[Person.js]  Name: ${name} clear timeout!`);
-            clearTimeout(timer);
-        }
-    }, []);
-
-        return (
-            <div className="Person">
-                <p onClick={click}>I'm {name} and I am {age} years old!</p>
-                <input type="text" onChange={changed} value={name} />
-            </div>
-        )
-};
-
-export default Person;
+export default withClass(Person, classes.Person);
