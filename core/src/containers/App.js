@@ -10,19 +10,17 @@ class App extends Component {
   constructor(props) {
     super(props);
     console.log('[App.js] constructor');
+    this.state = {
+      persons: [
+        { id: 'asfa1', name: 'Max', age: 28 },
+        { id: 'vasdf1', name: 'Manu', age: 29 },
+        { id: 'asdf11', name: 'Stephanie', age: 26 },
+      ],
+      showPersons: false,
+      showCockpit: true,
+      changeCounter: 0,
+    };
   }
-
-  state = {
-    persons: [
-      { id: 'asfa1', name: 'Max', age: 28 },
-      { id: 'vasdf1', name: 'Manu', age: 29 },
-      { id: 'asdf11', name: 'Stephanie', age: 26 }
-    ],
-    otherState: 'some other value',
-    showPersons: false,
-    showCockpit: true,
-    changeCounter: 0
-  };
 
   static getDerivedStateFromProps(props, state) {
     console.log('[App.js] getDerivedStateFromProps', props);
@@ -47,12 +45,10 @@ class App extends Component {
   }
 
   nameChangedHandler = (event, id) => {
-    const personIndex = this.state.persons.findIndex(p => {
-      return p.id === id;
-    });
+    const personIndex = this.state.persons.findIndex((p) => p.id === id);
 
     const person = {
-      ...this.state.persons[personIndex]
+      ...this.state.persons[personIndex],
     };
 
     // const person = Object.assign({}, this.state.persons[personIndex]);
@@ -62,19 +58,17 @@ class App extends Component {
     const persons = [...this.state.persons];
     persons[personIndex] = person;
 
-    this.setState((prevState, props) => {
-      return {
-        persons: persons,
-        changeCounter: prevState.changeCounter + 1
-      };
-    });
+    this.setState((prevState, props) => ({
+      persons,
+      changeCounter: prevState.changeCounter + 1,
+    }));
   };
 
-  deletePersonHandler = personIndex => {
+  deletePersonHandler = (personIndex) => {
     // const persons = this.state.persons.slice();
     const persons = [...this.state.persons];
     persons.splice(personIndex, 1);
-    this.setState({ persons: persons });
+    this.setState({ persons });
   };
 
   togglePersonsHandler = () => {
