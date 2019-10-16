@@ -114,4 +114,6 @@ class App extends Component {
   }
 }
 
+App.prototype
+
 export default withClass(App, classes.App);

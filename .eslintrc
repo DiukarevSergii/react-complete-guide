@@ -17,6 +17,7 @@
     "notice"
   ],
   "rules": {
+    "react/forbid-prop-types": [0],
     "max-len": ["error", { "code": 180 }],
     "import/no-extraneous-dependencies": ["error", {"packageDir": ["./core", "./"]}],
     "react/jsx-filename-extension": [
