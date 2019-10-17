@@ -20,6 +20,7 @@ class Person extends Component {
     console.log('[Person.js] rendering...');
     return (
       <Aux>
+        {this.props.isAuth ? <p>Authenticated!</p> : <p>Please log in!</p>}
         {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions,jsx-a11y/click-events-have-key-events */}
         <div onClick={this.props.click}>
           <p>
@@ -55,6 +56,7 @@ Person.propTypes = {
   children: PropTypes.string,
   age: PropTypes.number,
   changed: PropTypes.func,
+  isAuth: PropTypes.bool,
 };
 
 export default withClass(Person, classes.Person);

@@ -12,7 +12,7 @@ const Cockpit = (props) => {
     setTimeout(() => {
       // alert('Saved data to cloud!');
       toggleBtnRef.current.click();
-    }, 2000);
+    }, 300);
     return () => {
       console.log('[Cockpit.js] cleanup work in useEffect');
     };
@@ -48,6 +48,8 @@ const Cockpit = (props) => {
       <button className={btnClass} ref={toggleBtnRef} onClick={props.clicked}>
         Toggle Persons
       </button>
+      {/* eslint-disable-next-line react/button-has-type */}
+      <button onClick={props.login}>Log in</button>
     </div>
   );
 };
@@ -55,6 +57,7 @@ const Cockpit = (props) => {
 Cockpit.propTypes = {
   title: PropTypes.string,
   clicked: PropTypes.func,
+  login: PropTypes.func,
   personsLength: PropTypes.number,
   showPersons: PropTypes.bool,
 };
