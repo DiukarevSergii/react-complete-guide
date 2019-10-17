@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import classes from './Cockpit.css';
 
-const Cockpit = props => {
+const Cockpit = (props) => {
   useEffect(() => {
     console.log('[Cockpit.js] useEffect');
     // Http request...
@@ -40,11 +41,19 @@ const Cockpit = props => {
     <div className={classes.Cockpit}>
       <h1>{props.title}</h1>
       <p className={assignedClasses.join(' ')}>This is really working!</p>
+      {/* eslint-disable-next-line react/button-has-type */}
       <button className={btnClass} onClick={props.clicked}>
         Toggle Persons
       </button>
     </div>
   );
+};
+
+Cockpit.propTypes = {
+  title: PropTypes.string,
+  clicked: PropTypes.func,
+  personsLength: PropTypes.number,
+  showPersons: PropTypes.bool,
 };
 
 export default React.memo(Cockpit);
