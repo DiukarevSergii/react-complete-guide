@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-
+import AuthContext from '../../context/auth-context';
 import classes from './Cockpit.css';
 
 const Cockpit = (props) => {
@@ -48,8 +48,10 @@ const Cockpit = (props) => {
       <button className={btnClass} ref={toggleBtnRef} onClick={props.clicked}>
         Toggle Persons
       </button>
-      {/* eslint-disable-next-line react/button-has-type */}
-      <button onClick={props.login}>Log in</button>
+      <AuthContext.Consumer>
+        {/* eslint-disable-next-line react/button-has-type */}
+        {(context) => <button onClick={context.login}>Log in</button>}
+      </AuthContext.Consumer>
     </div>
   );
 };
@@ -57,7 +59,6 @@ const Cockpit = (props) => {
 Cockpit.propTypes = {
   title: PropTypes.string,
   clicked: PropTypes.func,
-  login: PropTypes.func,
   personsLength: PropTypes.number,
   showPersons: PropTypes.bool,
 };

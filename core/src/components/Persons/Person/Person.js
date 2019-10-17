@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Aux from '../../../hoc/Aux';
 import withClass from '../../../hoc/withClass';
 import classes from './Person.css';
+import AuthContext from '../../../context/auth-context';
 
 class Person extends Component {
   constructor(props) {
@@ -20,7 +21,10 @@ class Person extends Component {
     console.log('[Person.js] rendering...');
     return (
       <Aux>
-        {this.props.isAuth ? <p>Authenticated!</p> : <p>Please log in!</p>}
+        <AuthContext.Consumer>
+          {(context) => (context.authenticated ? <p>Authenticated!</p> : <p>Please log in!</p>)}
+        </AuthContext.Consumer>
+
         {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions,jsx-a11y/click-events-have-key-events */}
         <div onClick={this.props.click}>
           <p>
