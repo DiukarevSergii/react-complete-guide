@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import classes from './App.css';
 import Persons from '../components/Persons/Persons';
@@ -35,6 +36,7 @@ class App extends Component {
     console.log('[App.js] componentDidMount');
   }
 
+  // eslint-disable-next-line no-unused-vars
   shouldComponentUpdate(nextProps, nextState) {
     console.log('[App.js] shouldComponentUpdate');
     return true;
@@ -58,17 +60,17 @@ class App extends Component {
     const persons = [...this.state.persons];
     persons[personIndex] = person;
 
-    this.setState((prevState, props) => ({
+    this.setState((prevState) => ({
       persons,
       changeCounter: prevState.changeCounter + 1,
     }));
   };
 
   deletePersonHandler = (personIndex) => {
-    // const persons = this.state.persons.slice();
-    const persons = [...this.state.persons];
-    persons.splice(personIndex, 1);
-    this.setState({ persons });
+    const { persons } = this.state;
+    const newPersons = [...persons];
+    newPersons.splice(personIndex, 1);
+    this.setState({ persons: newPersons });
   };
 
   togglePersonsHandler = () => {
@@ -92,6 +94,7 @@ class App extends Component {
 
     return (
       <Aux>
+        {/* eslint-disable-next-line react/button-has-type */}
         <button
           onClick={() => {
             this.setState({ showCockpit: false });
@@ -114,6 +117,8 @@ class App extends Component {
   }
 }
 
-App.prototype
+App.propTypes = {
+  appTitle: PropTypes.string,
+};
 
 export default withClass(App, classes.App);

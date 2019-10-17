@@ -27,6 +27,7 @@ class Persons extends PureComponent {
   //   // return true;
   // }
 
+  // eslint-disable-next-line no-unused-vars
   getSnapshotBeforeUpdate(prevProps, prevState) {
     console.log('[Persons.js] getSnapshotBeforeUpdate');
     return { message: 'Snapshot!' };
@@ -62,8 +63,6 @@ class Persons extends PureComponent {
 Persons.propTypes = {
   clicked: PropTypes.func,
   persons: PropTypes.array,
-  children: PropTypes.string,
-  age: PropTypes.number,
   changed: PropTypes.func,
 };
 
