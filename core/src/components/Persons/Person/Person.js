@@ -12,18 +12,20 @@ class Person extends Component {
     this.inputElementRef = React.createRef();
   }
 
+  // eslint-disable-next-line react/sort-comp,react/static-property-placement
+  static contextType = AuthContext;
+
   componentDidMount() {
     // this.inputElement.focus();
     this.inputElementRef.current.focus();
+    console.log('[Person] this.context.authenticated', this.context.authenticated);
   }
 
   render() {
     console.log('[Person.js] rendering...');
     return (
       <Aux>
-        <AuthContext.Consumer>
-          {(context) => (context.authenticated ? <p>Authenticated!</p> : <p>Please log in!</p>)}
-        </AuthContext.Consumer>
+        {this.context.authenticated ? <p>Authenticated!</p> : <p>Please log in!</p>}
 
         {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions,jsx-a11y/click-events-have-key-events */}
         <div onClick={this.props.click}>
